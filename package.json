@@ -1,0 +1,43 @@
+{
+  "name": "3dps-full-stack-test",
+  "version": "1.0.0",
+  "main": "server/index.js",
+  "repository": "https://gitlab.com/adam-kuhn/3dps-full-stack-test.git",
+  "author": "adam-kuhn <adam.kuhn20@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack && node server",
+    "dev": "nodemon --watch server & webpack --watch",
+    "test": "jest --watch --noStackTrace"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react",
+      "stage-3"
+    ]
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "jest": "^22.4.3",
+    "nodemon": "^1.17.3",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.2.1",
+    "jwt-decode": "^2.2.0",
+    "mongoose": "^5.0.15",
+    "sodium": "^2.0.3"
+  }
+}
