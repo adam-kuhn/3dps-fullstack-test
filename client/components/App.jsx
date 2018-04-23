@@ -1,12 +1,12 @@
 import React from 'react'
 
-import Talks from './Talks'
+import LiveApp from './LiveApp'
 
 function App () {
   return (
     <div>
       <h1>setup complete</h1>
-      <Talks />
+      <LiveApp />
     </div>
   )
 }
