@@ -39,7 +39,7 @@ adamUser.save((err) => {
       if (err) {
         console.error(err)
       } else {
-        console.log('talk save', adamsTalk.title)
+        console.log('talk save', adamsTalk.title, adamsTalk._id, adamsTalk.author)
       }
     })
   }

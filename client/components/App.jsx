@@ -1,8 +1,13 @@
 import React from 'react'
 
+import Talks from './Talks'
+
 function App () {
   return (
-    <h1>setup complete</h1>
+    <div>
+      <h1>setup complete</h1>
+      <Talks />
+    </div>
   )
 }
 
