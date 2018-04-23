@@ -38,6 +38,7 @@
     "jsonwebtoken": "^8.2.1",
     "jwt-decode": "^2.2.0",
     "mongoose": "^5.0.15",
-    "sodium": "^2.0.3"
+    "sodium": "^2.0.3",
+    "superagent": "^3.8.2"
   }
 }
