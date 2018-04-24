@@ -1,8 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
 
-import {requestTalks} from '../actions'
+import {requestTalks} from '../actions/talks'
 import {logoutUser} from '../actions/auth'
 class LiveApp extends React.Component {
   constructor () {

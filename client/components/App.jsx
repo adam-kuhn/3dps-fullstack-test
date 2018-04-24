@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Route} from 'react-router-dom'
 
 import Login from './Login'
 import LiveApp from './LiveApp'
