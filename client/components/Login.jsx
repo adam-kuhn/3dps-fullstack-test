@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-// import {loginUser} from 
+import {loginUser, registerUser} from '../actions/auth'
 
 class Login extends React.Component {
   constructor (props) {
@@ -11,7 +11,8 @@ class Login extends React.Component {
       password: ''
     }
     this.handleChange = this.handleChange.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    this.handleLogin = this.handleLogin.bind(this)
+    this.handleRegister = this.handleRegister.bind(this)
     this.handleKeyUp = this.handleKeyUp.bind(this)
   }
   handleChange (e) {
@@ -20,14 +21,23 @@ class Login extends React.Component {
       [e.target.name]: e.target.value
     })
   }
-  handleClick () {
+  handleLogin () {
     const {username, password} = this.state
     const creds = {
       username: username.trim(),
       password: password.trim()
     }
-    // const goToLiveApp = () => this.props.history.push('/LiveApp')
-    // this.props.loginUser(creds, goToLiveApp)
+    const goToLiveApp = () => this.props.history.push('/LiveApp')
+    this.props.loginUser(creds, goToLiveApp)
+  }
+
+  handleRegister () {
+    const {username, password} = this.state
+    const creds = {
+      username: username.trim(),
+      password: password.trim()
+    }
+    this.props.dispatch(registerUser(creds))
   }
 
   handleKeyUp (e) {
@@ -43,7 +53,8 @@ class Login extends React.Component {
           placeholder='Username' value={username} />
         <input placeholder='Password' type='password' name='password'
           onChange={this.handleChange} autoComplete='off' value={password} />
-        <button type='button' onClick={this.handleClick}>Login</button>
+        <button type='button' onClick={this.handleLogin}>Login</button>
+        <button type='button' onClick={this.handleRegister}>Register</button>
       </div>
     )
   }
