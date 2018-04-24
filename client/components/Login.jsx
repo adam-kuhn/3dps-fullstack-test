@@ -53,6 +53,7 @@ class Login extends React.Component {
           placeholder='Username' value={username} />
         <input placeholder='Password' type='password' name='password'
           onChange={this.handleChange} autoComplete='off' value={password} />
+        <p>{this.props.errorMessage}</p>
         <button type='button' onClick={this.handleLogin}>Login</button>
         <button type='button' onClick={this.handleRegister}>Register</button>
       </div>
@@ -60,4 +61,10 @@ class Login extends React.Component {
   }
 }
 
-export default connect()(Login)
+function mapStateToProps (state) {
+  return {
+    errorMessage: state.error.errorMessage
+  }
+}
+
+export default connect(mapStateToProps)(Login)
