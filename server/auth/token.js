@@ -9,12 +9,19 @@ module.exports = {
 }
 
 function issue (req, res) {
+  console.log('at issue')
   User.find({username: req.body.username})
     .then(user => {
       const token = createToken(user, process.env.JWT_SECRET)
       res.json({
         message: 'Authentication successful.',
         token
+      })
+    })
+    .catch(err => {
+      return res.status(403).json({
+        message: 'Authentication failed.',
+        info: err.message
       })
     })
 }
