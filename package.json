@@ -8,7 +8,8 @@
   "scripts": {
     "start": "webpack && node server",
     "dev": "nodemon --watch server & webpack --watch",
-    "test": "jest --watch --noStackTrace"
+    "test": "jest --watch --noStackTrace",
+    "seed": "node seeds/user"
   },
   "babel": {
     "presets": [
@@ -35,9 +36,13 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "express-jwt": "^5.3.1",
     "jsonwebtoken": "^8.2.1",
     "jwt-decode": "^2.2.0",
     "mongoose": "^5.0.15",
+    "mongoose-seed": "^0.4.1",
     "sodium": "^2.0.3",
     "superagent": "^3.8.2"
   }
