@@ -5,8 +5,9 @@ const User = require('../../models/user')
 
 router.get('/', (req, res) => {
   User.find({})
+    .deleteMany({})
     .then(eachOne => {
-      console.log(eachOne)
+      console.log('deleted', eachOne)
       res.status(200).send(eachOne)
     })
   User.findById('5add4b7b4a2ea96600c20d29', (err, result) => {
