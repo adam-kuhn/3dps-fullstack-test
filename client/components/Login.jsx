@@ -27,8 +27,8 @@ class Login extends React.Component {
       username: username.trim(),
       password: password.trim()
     }
-    const goToLiveApp = () => this.props.history.push('/LiveApp')
-    this.props.loginUser(creds, goToLiveApp)
+    const goToLiveApp = () => this.props.history.push('/lightning-talks')
+    this.props.dispatch(loginUser(creds, goToLiveApp))
   }
 
   handleRegister () {
