@@ -18,7 +18,7 @@ function register (req, res, next) {
       if (result.length >= 1) {
         console.log('username in use')
         return res.status(400).send({
-          errorTpe: 'USERNAME_UNAVAILABLE'
+          errorType: 'USERNAME_UNAVAILABLE'
         })
       }
 
@@ -37,7 +37,7 @@ function register (req, res, next) {
       })
     })
 
-    .catch((err) => {
+    .catch(() => {
       res.status(400).send({
         errorType: 'DATABASE_ERROR'
       })
@@ -59,7 +59,7 @@ function login (req, res, next) {
       return isValid ? next() : invalidCredentials(res)
     })
 
-    .catch((err) => {
+    .catch(() => {
       res.status(400).send({
         errorType: 'DATABASE_ERROR'
       })

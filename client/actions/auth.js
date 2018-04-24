@@ -53,6 +53,7 @@ export const registerUser = (creds) => {
       })
       .catch(err => {
         const res = err.response.body
+        console.log('res err', res)
         const msg = 'Username is unavailable'
         if (res && res.errorType === 'USERNAME_UNAVAILABLE') {
           return dispatch(showError(msg))
