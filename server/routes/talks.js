@@ -1,19 +1,24 @@
 const express = require('express')
 const router = express.Router()
 
-const User = require('../../models/user')
+const Talk = require('../../models/talk')
 
 router.get('/', (req, res) => {
-  User.find({})
-    .then(eachOne => {
-      console.log('deleted', eachOne)
-      res.status(200).send(eachOne)
+  Talk.find({})
+    .then(talks => {
+      if (talks.length < 1) {
+        console.log('nothing')
+        res.status(200).send(talks)
+      } else {
+        res.status(200).send(talks)
+      }
     })
-  User.findById('5add4b7b4a2ea96600c20d29', (err, result) => {
-    if (err) throw err
-
-    console.log('found id', result)
-  })
+    .catch((err) => {
+      console.error(err)
+      res.status(400).send({
+        errorType: 'DATABASE_ERROR'
+      })
+    })
 })
 
 module.exports = router
