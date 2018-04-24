@@ -1,5 +1,7 @@
 import {combineReducers} from 'redux'
-import generic from './generic'
+import failLogin from './failLogin'
+import showLive from './showLive'
 export default combineReducers({
-  generic
+  failLogin,
+  showLive
 })
