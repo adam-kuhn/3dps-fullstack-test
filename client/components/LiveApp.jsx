@@ -13,8 +13,7 @@ class LiveApp extends React.Component {
     this.props.dispatch(requestTalks())
   }
   handleLogout () {
-    const goToLogin = () => this.props.history.push('/')
-    this.props.dispatch(logoutUser(goToLogin))
+    this.props.dispatch(logoutUser())
   }
 
   render () {
@@ -27,4 +26,4 @@ class LiveApp extends React.Component {
   }
 }
 
-export default withRouter(connect()(LiveApp))
+export default connect()(LiveApp)

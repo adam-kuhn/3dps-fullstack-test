@@ -35,19 +35,6 @@ const receivedRegistration = (token) => {
   }
 }
 
-const requestUserDetails = () => {
-  return {
-    type: REQUEST_USER_DETAILS
-  }
-}
-
-const receiveUserDetails = (userDetails) => {
-  return {
-    type: RECEIVED_USER_DETAILS,
-    userDetails
-  }
-}
-
 export const logoutUser = () => {
   logOffUser()
   return {
@@ -60,9 +47,8 @@ export const registerUser = (creds) => {
     dispatch(requestRegistration())
     return request('post', '/auth/register', creds)
       .then(res => {
-        const token = saveAuthToken(res.body.token)
+        saveAuthToken(res.body.token)
         dispatch(receivedRegistration(res.body))
-        dispatch(getUserDetails(token._id))
         dispatch(clearError())
       })
       .catch(err => {
@@ -76,28 +62,13 @@ export const registerUser = (creds) => {
   }
 }
 
-export function getUserDetails (userId) {
-  return (dispatch) => {
-    dispatch(requestUserDetails())
-    request('get', `/users/${userId}`)
-      .then(res => {
-        dispatch(receiveUserDetails(res.body))
-        dispatch(clearError())
-      })
-      .catch(() => {
-        dispatch(showError('An unexpect error has occurred.'))
-      })
-  }
-}
-
 export function loginUser (user, confirmSuccess) {
   return (dispatch) => {
     dispatch(requestLogin())
     request('post', '/auth/login', user)
       .then(res => {
-        const token = saveAuthToken(res.body.token)
+        saveAuthToken(res.body.token)
         dispatch(receivedLogin(res.body))
-        dispatch(getUserDetails(token._id))
         dispatch(clearError())
         confirmSuccess()
       })

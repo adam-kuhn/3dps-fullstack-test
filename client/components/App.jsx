@@ -10,19 +10,15 @@ class App extends React.Component {
   componentDidMount () {
     if (window.localStorage.getItem('token')) {
       this.props.dispatch(confirmToken())
-      const goToLiveApp = () => this.props.history.push('/lightning-talks')
-      goToLiveApp()
     } else {
       this.props.dispatch(noToken())
-      const goToLogin = () => this.props.history.push('/')
-      goToLogin()
     }
   }
   render () {
     return (
       <div>
-        {!this.props.showLive && <Route exact path='/' component={Login}/>}
-        {this.props.showLive && <Route exact path='/lightning-talks' component = {LiveApp}/>}
+        {!this.props.showLive && <Login/>}
+        {this.props.showLive && <LiveApp/>}
       </div>
     )
   }
@@ -34,4 +30,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(App))
+export default connect(mapStateToProps)(App)
