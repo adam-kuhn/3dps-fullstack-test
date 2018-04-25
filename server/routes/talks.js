@@ -23,7 +23,8 @@ router.post('/', (req, res) => {
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
     description: req.body.title,
-    username: req.body.username
+    username: req.body.username,
+    votes: 0
   })
   newTalk.save((err) => {
     if (err) {
@@ -31,6 +32,25 @@ router.post('/', (req, res) => {
     } else {
       console.log('new talk saved!')
       res.status(200).send()
+    }
+  })
+})
+
+router.post('/upvote', (req, res) => {
+  console.log('upvoting', req.body)
+  Talk.findById(req.body.talkId, (err, result) => {
+    if (err) {
+      console.error(err)
+    } else {
+      result.votes += 1
+      result.save((err) => {
+        if (err) {
+          console.error(err)
+        } else {
+          console.log(result)
+          res.status(200).send()
+        }
+      })
     }
   })
 })

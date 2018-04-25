@@ -13,6 +13,10 @@ const talkSchema = mongoose.Schema({
   username: {
     type: String,
     required: true
+  },
+  votes: {
+    type: Number,
+    required: true
   }
 })
 

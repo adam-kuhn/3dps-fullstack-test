@@ -1,13 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {requestTalks, showSubmit} from '../actions/talks'
+import {requestTalks, showSubmit, upVote} from '../actions/talks'
 import {logoutUser} from '../actions/auth'
 class Talks extends React.Component {
   constructor () {
     super()
     this.goToSubmit = this.goToSubmit.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount () {
     this.props.dispatch(requestTalks())
@@ -17,6 +18,9 @@ class Talks extends React.Component {
   }
   handleLogout () {
     this.props.dispatch(logoutUser())
+  }
+  handleClick (evt) {
+    this.props.dispatch(upVote(evt.target.value))
   }
 
   render () {
@@ -30,6 +34,8 @@ class Talks extends React.Component {
                 <h3>{talk.title}</h3>
                 <p>{talk.description}</p>
                 <p>By: {talk.username}</p>
+                <p>Votes: {talk.votes}</p>
+                <button type='button' value={talk._id} onClick={this.handleClick}>Up Vote!</button>
               </div>
             )
           })}
