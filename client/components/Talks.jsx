@@ -27,7 +27,9 @@ class Talks extends React.Component {
           : this.props.talks.map(talk => {
             return (
               <div key={talk._id}>
-                <h2 >{talk.title}</h2>
+                <h3>{talk.title}</h3>
+                <p>{talk.description}</p>
+                <p>By: {talk.username}</p>
               </div>
             )
           })}
