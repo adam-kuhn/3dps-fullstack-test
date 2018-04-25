@@ -1,12 +1,19 @@
 import request from 'superagent'
 
 export const RECEIVED_TALKS = 'RECEIVED_TALKS'
+export const SHOW_SUBMIT = 'SHOW_SUBMIT'
 
 export const getTalks = (talks) => {
   console.log('dispatched')
   return {
     type: RECEIVED_TALKS,
     talks
+  }
+}
+
+export const showSubmit = () => {
+  return {
+    type: SHOW_SUBMIT
   }
 }
 
