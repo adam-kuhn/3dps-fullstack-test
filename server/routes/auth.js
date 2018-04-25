@@ -12,6 +12,9 @@ router.post('/login', login, token.issue)
 
 function register (req, res, next) {
   User.find({username: req.body.username})
+  // un comment to clear db
+  // User.find({})
+  //   .deleteMany({})
     .then(result => {
       console.log(result)
       console.log(req.body.username, 'username')
@@ -45,7 +48,6 @@ function register (req, res, next) {
 }
 
 function login (req, res, next) {
-  console.log(req.body)
   User.find({username: req.body.username})
     .then(user => {
       console.log('login', user)

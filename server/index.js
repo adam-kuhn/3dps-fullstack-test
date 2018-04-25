@@ -19,3 +19,5 @@ mongoose.connect('mongodb://localhost/lightning-talks', (err) => {
     console.log('hey connected')
   }
 })
+Talk.find({})
+Talk.deleteMany({})
