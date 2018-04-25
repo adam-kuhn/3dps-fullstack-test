@@ -4,10 +4,12 @@ import showLive from './showLive'
 import error from './error'
 import talks from './talks'
 import display from './display'
+import username from './username'
 export default combineReducers({
   failLogin,
   showLive,
   error,
   talks,
-  display
+  display,
+  username
 })
