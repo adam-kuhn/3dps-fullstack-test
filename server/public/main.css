@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(205, 205, 245);
+  background-color: rgb(246, 246, 249);
 }
 
 .container {
@@ -11,10 +11,14 @@ body {
   justify-content: center;
   padding-bottom: 6rem;
   border-radius: 2rem;
+  align-items: center;
 }
 
+
 .talk {
-  padding: 0 8rem;
+  margin: 0.5rem;
+  background-color: grey;
+  padding: 0 5rem;
 }
 
 .talk-button {
