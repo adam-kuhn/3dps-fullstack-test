@@ -47,7 +47,9 @@ class Login extends React.Component {
   render () {
     const {username, password} = this.state
     return (
-      <div>
+      <div className='container'>
+        <h1 className='item'>Lightning Talks Forum</h1>
+        <h3 className='item'>Please register before signing in</h3>
         <input onChange={this.handleChange} name='username'
           placeholder='Username' value={username} />
         <input placeholder='Password' type='password' name='password'

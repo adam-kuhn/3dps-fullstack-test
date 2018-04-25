@@ -1,0 +1,28 @@
+body {
+  background-color: rgb(246, 246, 249);
+}
+
+.container {
+  width: 80%;
+  padding-left: 3rem;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column; 
+  justify-content: center;
+  padding-bottom: 6rem;
+  border-radius: 2rem;
+  align-items: center;
+}
+
+
+.talk {
+  margin: 0.5rem;
+  background-color: grey;
+  padding: 0 5rem;
+}
+
+.talk-button {
+  margin: 0 12rem;
+  margin-top: 1rem;
+  text-align: center;
+}
