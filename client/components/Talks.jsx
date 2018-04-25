@@ -26,12 +26,12 @@ class Talks extends React.Component {
 
   render () {
     return (
-      <div>
-        <h1>Lightning Talks</h1>
+      <div className='container'>
+        <h1 className='item'>Lightning Talks</h1>
         {this.props.talks.length < 1 ? <p>There are no talks yet! Please submit your own by clicking the button below </p>
           : this.props.talks.map(talk => {
             return (
-              <div key={talk._id}>
+              <div className='talk' key={talk._id}>
                 <h3>{talk.title}</h3>
                 <p>Description: {talk.description}</p>
                 <p>By: {talk.username}</p>
@@ -40,8 +40,8 @@ class Talks extends React.Component {
               </div>
             )
           })}
-        <button type='button' onClick={this.goToSubmit}>Submit A New Talk</button>
-        <button type='button' onClick={this.handleLogout}>Logout</button>
+        <button className='talk-button' type='button' onClick={this.goToSubmit}>Submit A New Talk</button>
+        <button className='talk-button' type='button' onClick={this.handleLogout}>Logout</button>
       </div>
     )
   }
