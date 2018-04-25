@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import {requestTalks, showSubmit, upVote} from '../actions/talks'
 import {logoutUser} from '../actions/auth'
+
 class Talks extends React.Component {
   constructor () {
     super()
