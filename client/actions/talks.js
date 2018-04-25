@@ -4,6 +4,7 @@ export const RECEIVED_TALKS = 'RECEIVED_TALKS'
 export const SHOW_SUBMIT = 'SHOW_SUBMIT'
 export const RECEIVED_NEW_TALK = 'RECEIVED_NEW_TALK'
 export const SHOW_TALK = 'SHOW_TALK'
+export const RECEIVED_VOTES = 'RECEIVED_VOTES'
 
 export const getTalks = (talks) => {
   return {
@@ -28,6 +29,13 @@ export const receivedNewTalk = (talkInfo) => {
   return {
     type: RECEIVED_NEW_TALK,
     talkInfo
+  }
+}
+
+export const receivedVotes = (talks) => {
+  return {
+    type: RECEIVED_VOTES,
+    talks
   }
 }
 
@@ -61,8 +69,8 @@ export const upVote = (talkId) => {
       .post('/api/v1/talks/upvote')
       .set('Content-Type', 'application/json')
       .send({talkId})
-      .then(() => {
-        dispatch(showTalks())
+      .then((res) => {
+        dispatch(receivedVotes(res.body))
       })
   }
 }
