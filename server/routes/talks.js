@@ -7,8 +7,6 @@ const Talk = require('../../models/talk')
 
 router.get('/', (req, res) => {
   Talk.find({})
-  // un comment to clear db
-    // .deleteMany({})
     .then(talks => {
       res.status(200).send(talks)
     })
