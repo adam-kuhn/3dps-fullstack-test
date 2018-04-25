@@ -54,6 +54,7 @@ class Login extends React.Component {
         <input placeholder='Password' type='password' name='password'
           onChange={this.handleChange} autoComplete='off' value={password} />
         <p>{this.props.errorMessage}</p>
+        <p>{this.props.registerMessage}</p>
         <button type='button' onClick={this.handleLogin}>Login</button>
         <button type='button' onClick={this.handleRegister}>Register</button>
       </div>
@@ -63,7 +64,8 @@ class Login extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    errorMessage: state.error.errorMessage
+    errorMessage: state.error.errorMessage,
+    registerMessage: state.message
   }
 }
 
