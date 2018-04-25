@@ -9,6 +9,7 @@ export const REQUEST_REGISTRATION = 'REQUEST_REGISTRATION'
 export const RECEIVED_REGISTRATION = 'RECEIVED_REGISTRATION'
 export const REQUEST_USER_DETAILS = 'REQUEST_USER_DETAILS'
 export const RECEIVED_USER_DETAILS = 'RECEIVED_USER_DETAILS'
+export const STORE_USERNAME = 'STORE_USERNAME'
 
 const requestLogin = () => {
   return {
@@ -42,11 +43,19 @@ export const logoutUser = () => {
   }
 }
 
+export const storeUsername = (username) => {
+  return {
+    type: STORE_USERNAME,
+    username
+  }
+}
+
 export const registerUser = (creds) => {
   return (dispatch) => {
     dispatch(requestRegistration())
     return request('post', '/auth/register', creds)
       .then(res => {
+        dispatch(storeUsername(creds.username))
         saveAuthToken(res.body.token)
         dispatch(receivedRegistration(res.body))
         dispatch(clearError())

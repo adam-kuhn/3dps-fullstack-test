@@ -1,29 +1,26 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
 
-import {requestTalks} from '../actions'
+import {requestTalks, showSubmit} from '../actions/talks'
 import {logoutUser} from '../actions/auth'
-class LiveApp extends React.Component {
-  constructor () {
-    super()
-    this.handleLogout = this.handleLogout.bind(this)
-  }
-  componentDidMount () {
-    this.props.dispatch(requestTalks())
-  }
-  handleLogout () {
-    this.props.dispatch(logoutUser())
-  }
 
+import Talks from './Talks'
+import SubmitTalks from './SubmitTalks'
+class LiveApp extends React.Component {
   render () {
     return (
       <div>
-        <h1>Lightning Talks</h1>
-        <button type='button' onClick={this.handleLogout}>Logout</button>
+        {!this.props.display && <Talks />}
+        {this.props.display && <SubmitTalks />}
       </div>
     )
   }
 }
 
-export default connect()(LiveApp)
+function mapStateToProps (state) {
+  return {
+    display: state.display
+  }
+}
+
+export default connect(mapStateToProps)(LiveApp)
