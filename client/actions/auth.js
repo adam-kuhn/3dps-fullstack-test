@@ -72,7 +72,7 @@ export const registerUser = (creds) => {
   }
 }
 
-export function loginUser (user, confirmSuccess) {
+export function loginUser (user) {
   return (dispatch) => {
     dispatch(requestLogin())
     request('post', '/auth/login', user)
@@ -80,9 +80,9 @@ export function loginUser (user, confirmSuccess) {
         saveAuthToken(res.body.token)
         dispatch(receivedLogin(res.body))
         dispatch(clearError())
-        confirmSuccess()
       })
       .catch(err => {
+        console.log(err)
         const res = err.response.body
         const msg = 'Username and password don\'t match an existing user'
         if (res && res.errorType === 'INVALID_CREDENTIALS') {
