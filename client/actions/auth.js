@@ -62,7 +62,6 @@ export const registerUser = (creds) => {
       })
       .catch(err => {
         const res = err.response.body
-        console.log('res err', res)
         const msg = 'Username is unavailable'
         if (res && res.errorType === 'USERNAME_UNAVAILABLE') {
           return dispatch(showError(msg))
@@ -72,7 +71,7 @@ export const registerUser = (creds) => {
   }
 }
 
-export function loginUser (user, confirmSuccess) {
+export function loginUser (user) {
   return (dispatch) => {
     dispatch(requestLogin())
     request('post', '/auth/login', user)
@@ -80,7 +79,6 @@ export function loginUser (user, confirmSuccess) {
         saveAuthToken(res.body.token)
         dispatch(receivedLogin(res.body))
         dispatch(clearError())
-        confirmSuccess()
       })
       .catch(err => {
         const res = err.response.body

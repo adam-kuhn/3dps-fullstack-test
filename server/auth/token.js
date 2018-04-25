@@ -9,7 +9,6 @@ module.exports = {
 }
 
 function issue (req, res) {
-  console.log('at issue')
   User.find({username: req.body.username})
     .then(user => {
       const token = createToken(user, process.env.JWT_SECRET)
