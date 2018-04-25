@@ -32,7 +32,7 @@ class Talks extends React.Component {
             return (
               <div key={talk._id}>
                 <h3>{talk.title}</h3>
-                <p>{talk.description}</p>
+                <p>Description: {talk.description}</p>
                 <p>By: {talk.username}</p>
                 <p>Votes: {talk.votes}</p>
                 <button type='button' value={talk._id} onClick={this.handleClick}>Up Vote!</button>
