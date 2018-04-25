@@ -12,9 +12,6 @@ router.post('/login', login, token.issue)
 
 function register (req, res, next) {
   User.find({username: req.body.username})
-  // // un comment to clear db
-  // User.find({})
-  //   .deleteMany({})
     .then(result => {
       if (result.length >= 1) {
         return res.status(400).send({
