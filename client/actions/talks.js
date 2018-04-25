@@ -63,7 +63,6 @@ export const submitTalk = (talk) => {
 }
 
 export const upVote = (talkId) => {
-  console.log('upvote', talkId)
   return (dispatch) => {
     request
       .post('/api/v1/talks/upvote')
