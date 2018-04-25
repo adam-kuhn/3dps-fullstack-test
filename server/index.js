@@ -3,9 +3,6 @@ require('dotenv').config()
 const server = require('./server')
 const mongoose = require('mongoose')
 
-const User = require('../models/user')
-const Talk = require('../models/talk')
-
 const port = process.env.PORT || 3000
 
 server.listen(port, function () {
@@ -14,10 +11,10 @@ server.listen(port, function () {
 })
 
 mongoose.connect('mongodb://localhost/lightning-talks', (err) => {
+  // eslint-disable-next-line no-console
   if (err) console.error(err)
   else {
-    console.log('hey connected')
+    // eslint-disable-next-line no-console
+    console.log('DB connected')
   }
 })
-Talk.find({})
-Talk.deleteMany({})

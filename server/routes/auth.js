@@ -16,10 +16,7 @@ function register (req, res, next) {
   // User.find({})
   //   .deleteMany({})
     .then(result => {
-      console.log(result)
-      console.log(req.body.username, 'username')
       if (result.length >= 1) {
-        console.log('username in use')
         return res.status(400).send({
           errorType: 'USERNAME_UNAVAILABLE'
         })
@@ -32,9 +29,9 @@ function register (req, res, next) {
       })
       newUser.save((err) => {
         if (err) {
+          // eslint-disable-next-line no-console
           console.error(err)
         } else {
-          console.log('new user saved!')
           next()
         }
       })
@@ -50,14 +47,12 @@ function register (req, res, next) {
 function login (req, res, next) {
   User.find({username: req.body.username})
     .then(user => {
-      console.log('login', user)
       return user[0] || invalidCredentials(res)
     })
     .then(user => {
       return user && hash.verify(user.password, req.body.password)
     })
     .then(isValid => {
-      console.log('success')
       return isValid ? next() : invalidCredentials(res)
     })
 

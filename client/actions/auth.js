@@ -62,7 +62,6 @@ export const registerUser = (creds) => {
       })
       .catch(err => {
         const res = err.response.body
-        console.log('res err', res)
         const msg = 'Username is unavailable'
         if (res && res.errorType === 'USERNAME_UNAVAILABLE') {
           return dispatch(showError(msg))
@@ -82,7 +81,6 @@ export function loginUser (user) {
         dispatch(clearError())
       })
       .catch(err => {
-        console.log(err)
         const res = err.response.body
         const msg = 'Username and password don\'t match an existing user'
         if (res && res.errorType === 'INVALID_CREDENTIALS') {
