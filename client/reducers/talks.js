@@ -1,6 +1,6 @@
 import {RECEIVED_TALKS, RECEIVED_VOTES} from '../actions/talks'
 
-function compare (a, b) {
+export function compare (a, b) {
   if (a.votes > b.votes) {
     return -1
   }
