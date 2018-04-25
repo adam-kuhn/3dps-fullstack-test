@@ -1,3 +1,5 @@
+const mongoose = require('mongoose')
+
 const express = require('express')
 const router = express.Router()
 
@@ -14,6 +16,23 @@ router.get('/', (req, res) => {
         errorType: 'DATABASE_ERROR'
       })
     })
+})
+
+router.post('/', (req, res) => {
+  const newTalk = new Talk({
+    _id: new mongoose.Types.ObjectId(),
+    title: req.body.title,
+    description: req.body.title,
+    username: req.body.username
+  })
+  newTalk.save((err) => {
+    if (err) {
+      console.error(err)
+    } else {
+      console.log('new talk saved!')
+      res.status(200).send()
+    }
+  })
 })
 
 module.exports = router

@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {submitTalk} from '../actions/talks'
+
 class SubmitTalks extends React.Component {
   constructor () {
     super()
@@ -10,11 +12,15 @@ class SubmitTalks extends React.Component {
       description: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
   handleChange (evt) {
     this.setState({
       [evt.target.name]: evt.target.value
     })
+  }
+  handleClick () {
+    this.props.dispatch(submitTalk(this.state))
   }
   render () {
     return (
@@ -32,6 +38,7 @@ class SubmitTalks extends React.Component {
           <input onChange={this.handleChange} name='description'
             value={this.state.description}/>
         </label>
+        <button type='button' onClick={this.handleClick}>Submit Talk</button>
       </div>
 
     )
